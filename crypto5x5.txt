@@ -1,0 +1,10 @@
+Ever heard of the 5x5 secret message system?
+ If not, basically it's a 5x5 grid with all letters of the alphabet in order, 
+without k because c is represented to make the k sound only. 
+Google it if you need to. 
+
+
+1-2,1-3,1-1,2-2{2-5,5-1,1-1,2-4,5-1,1-2,1-1,5-4,3-5}
+
+hint:
+daer ssorca neht nwod

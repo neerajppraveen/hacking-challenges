@@ -1,0 +1,240 @@
+
+
+TEAMFAUX - Walkthrough ( Previous Tasks)
+                                                                            
+
+########################
+#  Task 1 - so_meta    #
+########################
+Task file : so_meta
+
+unzip so_meta
+
+###############Step 1 : Analyse 3UWLBAUCb9Z2.jpg#########################
+
+Command : $file 3UWLBAUCb9Z2.jpg
+Result :
+3UWLBAUCb9Z2.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, Exif Standard: [TIFF image data, big-endian, direntries=8, orientation=upper-left, xresolution=2170, yresolution=2178, resolutionunit=2, software=Photos 1.5,
+ datetime=2014:12:27 16:45:55], baseline, precision 8, 800x307, components 3
+
+###############Step 2 : Analyse 3UWLBAUCb9Z2.jpg Exif data################
+
+Command ::  $exiftool 3UWLBAUCb9Z2.jpg
+Results :
+ExifTool Version Number         : 12.12
+File Name                       : 3UWLBAUCb9Z2.jpg
+Directory                       : .
+File Size                       : 101 KiB
+File Modification Date/Time     : 2021:01:03 12:04:17+05:30
+File Access Date/Time           : 2021:01:05 19:33:27+05:30
+File Inode Change Date/Time     : 2021:01:05 19:33:35+05:30
+File Permissions                : rwxrwxrwx
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Current IPTC Digest             : dbad0204d16a63027791298bc460859a
+Coded Character Set             : UTF8
+Application Record Version      : 2
+Digital Creation Time           : 16:45:55
+Digital Creation Date           : 2014:12:27
+Time Created                    : 16:45:55
+IPTC Digest                     : dbad0204d16a63027791298bc460859a
+Exif Byte Order                 : Big-endian (Motorola, MM)
+Orientation                     : Horizontal (normal)
+X Resolution                    : 72
+Y Resolution                    : 72
+Resolution Unit                 : inches
+Software                        : Photos 1.5
+Modify Date                     : 2014:12:27 16:45:55
+Exif Version                    : 0221
+Date/Time Original              : 2014:12:27 16:45:55
+Create Date                     : 2014:12:27 16:45:55
+Components Configuration        : Y, Cb, Cr, -
+Light Source                    : Tungsten (Incandescent)
+Flashpix Version                : 0100
+Color Space                     : sRGB
+Exif Image Width                : 4002
+Exif Image Height               : 1536
+Scene Capture Type              : Standard
+Sharpness                       : Hard
+Padding                         : (Binary data 2060 bytes, use -b option to extract)
+XMP Toolkit                     : XMP Core 5.4.0
+Creator Tool                    : Photos 1.5
+Date Created                    : 2014:12:27 16:45:55
+Warning                         : [minor] Fixed incorrect URI for xmlns:MicrosoftPhoto
+Camera Serial Number            : flag{EEe_x_I_FFf} <<<<<-----------------------------FLAG
+Image Width                     : 800
+Image Height                    : 307
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 800x307
+Megapixels                      : 0.246
+Date/Time Created               : 2014:12:27 16:45:55
+Digital Creation Date/Time      : 2014:12:27 16:45:55
+flag : flag{EEe_x_I_FFf}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################
+#    Task 2 - letswalk           #
+##################################
+Task file : letswalk.zip
+###############Step 1 : Analyse letswalk.zip#########################
+
+command: $file letswalk.zip
+Result:
+letswalk.zip: Zip archive data, at least v?[0x314] to extract
+
+###############Step 2 : Unzip letswalk.zip##########################
+Command :$unzip letswalk.zip
+Result:
+Archive:  letswalk.zip
+  inflating: PurpleThing.jpeg  <------------- Target 
+ extracting: hint.txt
+ 
+###############Step 3 : Read hint.txt###############################
+
+Command :$cat hint.txt
+Result:
+have you ever seen a 'bin walk'ing ??
+
+###############Step 4 : Analyse PurpleThing.jpeg ###################
+Command: $file PurpleThing.jpeg
+Result:
+PurpleThing.jpeg: PNG image data, 780 x 720, 8-bit/color RGBA, non-interlaced
+
+###############Step 5 : Analyse PurpleThing.jpeg Exif data #########
+Command: $exiftool PurpleThing.jpeg
+Result:
+ExifTool Version Number         : 12.12
+File Name                       : PurpleThing.jpeg
+Directory                       : .
+File Size                       : 161 KiB
+File Modification Date/Time     : 2021:01:03 01:53:28+05:30
+File Access Date/Time           : 2021:01:03 01:53:28+05:30
+File Inode Change Date/Time     : 2021:01:05 19:38:25+05:30
+File Permissions                : rwxrwxrwx
+File Type                       : PNG
+File Type Extension             : png
+MIME Type                       : image/png
+Image Width                     : 780
+Image Height                    : 720
+Bit Depth                       : 8
+Color Type                      : RGB with Alpha
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Warning                         : [minor] Trailer data after PNG IEND chunk
+Image Size                      : 780x720
+Megapixels                      : 0.562
+
+###############Step 6 : Extract hidden file (Using binwalk)#########
+
+Command: $binwalk --extract --dd=".*" PurpleThing.jpeg
+		 $ls
+		 $cd _PurpleThing.jpeg.extracted
+		 
+
+###############Step 7 : Opening Image 25975 #########################
+
+Drag 25795 to gimp or other alternative
+
+Flag :ABCTF{b1nw4lk_is_us3ful}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################
+# Task 3 - 12andhalf     	    #
+#####################################
+Task file : 12andhalf.txt
+https://rot13.com/
+
+rot-8 algorithm
+
+go https://pastebin.com/dN9P97t0
+   password : yourname
+
+
+Decode Base64 : dGhlcmUgYXJlIG5vIHNlY3JldHMgdG8gc3VjY2VlZC4ua2VlcCBwcmFjdGljaW5nCmZsYWd7SV9zZWVfYV9INGNLM3JfaW5fWTB1fQ==
+
+flag{I_see_a_H4cK3r_in_Y0u}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####################################
+# Task 4 - crypto5x5     	    #
+#####################################
+
+Task File :crypto5x5.txt
+
+Visit https://crypto.interactive-maths.com/polybius-square.html
+
+flag{wearefaux}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
